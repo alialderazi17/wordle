@@ -1,2 +1,7 @@
-# wordle
-This is a Wordle game For Project 1 of the Software Engineering Bootcamp with General Assembly
+# Wordle
+
+## By: Ali
+
+## Date: February 5th, 2026
+
+

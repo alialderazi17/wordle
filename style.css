@@ -1,3 +1,24 @@
-body {
-  background-color: grey;
+h1 {
+  display: flex;
+  margin: 9px;
+  justify-content: center;
+}
+
+.board {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  height: 250px;
+  width: 500px;
+  justify-content: center;
+}
+.square {
+  display: flex;
+  width: 18%;
+  aspect-ratio: 1/1;
+  border: 2px solid black;
+  box-sizing: border-box;
+  font-size: 64px;
+  text-align: center;
+  justify-content: space-evenly;
 }

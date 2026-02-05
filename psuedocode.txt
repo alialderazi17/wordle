@@ -1,0 +1,15 @@
+The page should greet the user with a welcome message, while having a button to start the game.
+The game should select/generate a hidden "winning" word randomly.
+The selected word should be an actual word not just any String.
+The player will have 6 guesses/tries.
+The player input should be a valid word not just any guesses.
+If the player enters an invalid word it shouldn't accept it and gets counted as a try.
+Depending on how many tries the player got the word, it should show a small congratulations message.
+Each word will be tested to check the different states.
+Each letter of the words guessed will be highlighted with one of three colors.
+Dark Grey/Black will be for the letters that aren't in the "winning" word.
+Yellow indicates that the letter exists, but not in the right position.
+Green is for when the letter is in the correct place.
+The player can only win if all the letters are green.
+The colors should also be highlighted in the page keyboard.
+The keyboard in the page should also work when clicked, displaying the corresponding value.

@@ -1,4 +1,4 @@
-The page should greet the user with a welcome message, while having a button to start the game.
+The page should greet the user with a welcome message, while having a button to start the game. (maybe not, make a victory screen instead?)
 The game should select/generate a hidden "winning" word randomly.
 The selected word should be an actual word not just any String.
 The player will have 6 guesses/tries.
@@ -12,4 +12,4 @@ Yellow indicates that the letter exists, but not in the right position.
 Green is for when the letter is in the correct place.
 The player can only win if all the letters are green.
 The colors should also be highlighted in the page keyboard.
-The keyboard in the page should also work when clicked, displaying the corresponding value.
+The keyboard in the page should also work when clicked, displaying the corresponding value. // trying to get this first

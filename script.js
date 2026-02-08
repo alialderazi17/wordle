@@ -6,7 +6,7 @@ console.log("Lumiere")
 
 let board
 let winner
-let word
+let letter
 
 const squareElements = document.querySelectorAll(".square")
 const miniSquareElements = document.querySelectorAll(".mini-square")
@@ -17,9 +17,9 @@ const miniSquareElements = document.querySelectorAll(".mini-square")
 // functions for the logic
 const initialization = () => {
   board = [
-    "E",
-    "S",
-    "Q",
+    "",
+    "",
+    "",
     "",
     "",
     "",
@@ -49,7 +49,7 @@ const initialization = () => {
     "",
   ]
   winner = false
-  // word = "VERSO"
+  letter = ""
   render()
 }
 
@@ -68,20 +68,29 @@ const updateBoard = () => {
     element.textContent = board[index]
   })
 }
-
-function placeLetter(index) {
-  // board[index] = miniSquareElement[index]
-}
-
 function handleClick(event) {
-  const keyIndex = event.target.textContent
+  const sqrIndex = event.target.textContent
+  letter = sqrIndex
   // if (board[keyIndex] != "" || winner === true) {
   //   return
   // }
   // console.log("SEPHIROTH")
-  console.log(keyIndex)
-  placeLetter(keyIndex)
+  insertLetter(sqrIndex)
+  console.log(sqrIndex)
+  render()
 }
+
+function insertLetter() {
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] === "") {
+      board.splice(i, 0, letter)
+      board.pop()
+      console.log(board)
+      break
+    }
+  }
+}
+
 initialization()
 // event listeners
 

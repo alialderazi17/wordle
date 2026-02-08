@@ -1,6 +1,18 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 h1 {
   display: flex;
   margin: 9px;
+  justify-content: center;
+}
+footer {
+  margin-top: auto;
+}
+div {
+  align-items: center;
   justify-content: center;
 }
 
@@ -8,9 +20,10 @@ h1 {
   display: flex;
   margin: auto;
   flex-wrap: wrap;
-  height: 250px;
-  width: 500px;
+  height: auto;
+  width: 350px;
   justify-content: center;
+  gap: 5px 5px;
 }
 .square {
   display: flex;
@@ -21,4 +34,62 @@ h1 {
   font-size: 64px;
   text-align: center;
   justify-content: space-evenly;
+}
+.keyboard {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  height: auto;
+}
+.mini-square {
+  display: flex;
+  flex-flow: nowrap row;
+  aspect-ratio: 1/1;
+  border: 2px solid black;
+  background-color: gray;
+  box-sizing: border-box;
+  font-size: 32px;
+  text-align: center;
+  justify-content: space-evenly;
+  width: 8%;
+  color: white;
+}
+.top-row {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  gap: 5px 5px;
+}
+
+.home-row {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  gap: 5px 5px;
+}
+
+.bottom-row {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  gap: 5px 5px;
+}
+
+.rectangle {
+  display: flex;
+  flex-grow: 2;
+  height: auto;
+  border: 2px solid black;
+  background-color: gray;
+  box-sizing: border-box;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  width: 65px;
 }

@@ -103,5 +103,15 @@ miniSquareElements.forEach((element) => {
 enter.addEventListener("click", () => {
   if (currentIndex === (currentRow + 1) * 5) {
     currentRow++
+    render()
+  }
+})
+
+backspace.addEventListener("click", () => {
+  console.log("Sephiroth")
+  if (currentIndex > currentRow * 5) {
+    currentIndex--
+    board[currentIndex] = ""
+    render()
   }
 })

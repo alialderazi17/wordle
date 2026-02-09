@@ -10,6 +10,8 @@ let letter
 let currentIndex
 let currentRow
 
+wordArray = ["GRUMP", "VERSO", "PAINT", "GRIEF", "PARRY"]
+
 const squareElements = document.querySelectorAll(".square")
 const miniSquareElements = document.querySelectorAll(".mini-square")
 const enter = document.querySelector("#enter")
@@ -102,7 +104,12 @@ miniSquareElements.forEach((element) => {
 
 enter.addEventListener("click", () => {
   if (currentIndex === (currentRow + 1) * 5) {
-    currentRow++
+    let guess = board.slice(currentRow * 5, (currentRow + 1) * 5).join("")
+
+    console.log(guess)
+    if (wordArray.includes(guess)) {
+      currentRow++
+    }
     render()
   }
 })

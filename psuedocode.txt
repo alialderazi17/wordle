@@ -1,9 +1,9 @@
 The page should greet the user with a welcome message, while having a button to start the game. (maybe not, make a victory screen instead?)
 The game should select/generate a hidden "winning" word randomly.
-The selected word should be an actual word not just any String.
-The player will have 6 guesses/tries.
-The player input should be a valid word not just any guesses.
-If the player enters an invalid word it shouldn't accept it and gets counted as a try.
+The selected word should be an actual word not just any String. // done
+The player will have 6 guesses/tries. // done
+The player input should be a valid word not just any guesses. // done
+If the player enters an invalid word it shouldn't accept it and won't be counted as a try. //
 Depending on how many tries the player got the word, it should show a small congratulations message.
 Each word will be tested to check the different states.
 Each letter of the words guessed will be highlighted with one of three colors.

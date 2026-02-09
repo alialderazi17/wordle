@@ -10,6 +10,9 @@ let letter
 let currentIndex
 let currentRow
 
+const aL = "qwertyuiopasdfghjklzxcvbnm"
+const split = aL.split("")
+
 wordArray = ["GRUMP", "VERSO", "PAINT", "GRIEF", "PARRY", "GLASS"]
 
 const squareElements = document.querySelectorAll(".square")
@@ -90,8 +93,12 @@ function handleClick(event) {
 function insertLetter() {
   if (currentIndex < (currentRow + 1) * 5) {
     board[currentIndex] = letter
-    currentIndex++
-    console.log(board)
+    if ((currentRow + 1) * 5 === 35) {
+      return console.log(letter)
+    } else {
+      currentIndex++
+      console.log(board)
+    }
   }
 }
 
@@ -133,8 +140,13 @@ document.addEventListener("keydown", (event) => {
     backspace.click()
   }
   if (event.key.length === 1) {
-    letter = event.key.toUpperCase()
-    insertLetter()
-    render()
+    let pressedKey = event.key.toLowerCase()
+    if (split.includes(pressedKey) !== true) {
+      return false
+    } else {
+      letter = event.key.toUpperCase()
+      insertLetter()
+      render()
+    }
   }
 })

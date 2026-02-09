@@ -7,9 +7,13 @@ console.log("Lumiere")
 let board
 let winner
 let letter
+let currentIndex
+let currentRow
 
 const squareElements = document.querySelectorAll(".square")
 const miniSquareElements = document.querySelectorAll(".mini-square")
+const enter = document.querySelector("#enter")
+const backspace = document.querySelector("#backspace")
 // const keyboard = document.querySelector(".keyboard")
 // console.log(keyboard)
 // console.log(miniSquareElement)
@@ -50,6 +54,8 @@ const initialization = () => {
   ]
   winner = false
   letter = ""
+  currentIndex = 0
+  currentRow = 0
   render()
 }
 
@@ -70,24 +76,20 @@ const updateBoard = () => {
 }
 function handleClick(event) {
   const sqrIndex = event.target.textContent
-  letter = sqrIndex
-  // if (board[keyIndex] != "" || winner === true) {
-  //   return
-  // }
-  // console.log("SEPHIROTH")
-  insertLetter(sqrIndex)
-  console.log(sqrIndex)
-  render()
+  if (sqrIndex.length === 1) {
+    letter = sqrIndex
+    console.log(event.target.id)
+    insertLetter()
+    // console.log(sqrIndex)
+    render()
+  }
 }
 
 function insertLetter() {
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] === "") {
-      board.splice(i, 0, letter)
-      board.pop()
-      console.log(board)
-      break
-    }
+  if (currentIndex < (currentRow + 1) * 5) {
+    board[currentIndex] = letter
+    currentIndex++
+    console.log(board)
   }
 }
 
@@ -96,4 +98,10 @@ initialization()
 
 miniSquareElements.forEach((element) => {
   element.addEventListener("click", handleClick)
+})
+
+enter.addEventListener("click", () => {
+  if (currentIndex === (currentRow + 1) * 5) {
+    currentRow++
+  }
 })

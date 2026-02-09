@@ -10,7 +10,7 @@ let letter
 let currentIndex
 let currentRow
 
-wordArray = ["GRUMP", "VERSO", "PAINT", "GRIEF", "PARRY"]
+wordArray = ["GRUMP", "VERSO", "PAINT", "GRIEF", "PARRY", "GLASS"]
 
 const squareElements = document.querySelectorAll(".square")
 const miniSquareElements = document.querySelectorAll(".mini-square")
@@ -20,7 +20,7 @@ const backspace = document.querySelector("#backspace")
 // console.log(keyboard)
 // console.log(miniSquareElement)
 
-// functions for the logic
+/////////////////// Functions for the logic
 const initialization = () => {
   board = [
     "",
@@ -96,7 +96,7 @@ function insertLetter() {
 }
 
 initialization()
-// event listeners
+//////////////////////// Event Listeners //////////////////////////////////
 
 miniSquareElements.forEach((element) => {
   element.addEventListener("click", handleClick)
@@ -119,6 +119,22 @@ backspace.addEventListener("click", () => {
   if (currentIndex > currentRow * 5) {
     currentIndex--
     board[currentIndex] = ""
+    render()
+  }
+})
+
+document.addEventListener("keydown", (event) => {
+  // console.log("Sephiroth")
+  event.preventDefault()
+  if (event.key === "Enter") {
+    enter.click()
+  }
+  if (event.key === "Backspace") {
+    backspace.click()
+  }
+  if (event.key.length === 1) {
+    letter = event.key.toUpperCase()
+    insertLetter()
     render()
   }
 })

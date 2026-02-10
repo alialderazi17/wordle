@@ -13,7 +13,16 @@ let currentRow
 const aL = "qwertyuiopasdfghjklzxcvbnm"
 const splitAL = aL.split("")
 
-let wordArray = ["GRUMP", "VERSO", "PAINT", "GRIEF", "PARRY", "GLASS", "SWORD"]
+let wordArray = [
+  "GRUMP",
+  "VERSO",
+  "PAINT",
+  "GRIEF",
+  "PARRY",
+  "GLASS",
+  "SWORD",
+  "VERSE",
+]
 
 const squareElements = document.querySelectorAll(".square")
 const miniSquareElements = document.querySelectorAll(".mini-square")
@@ -121,28 +130,60 @@ enter.addEventListener("click", () => {
     if (guess === winWord) {
       console.log("SEPHIROTH WINS")
       winner = true
-    }
-    if (winner === true) {
-      return
     } else if (currentRow === 5 && winner === false && guess !== winWord) {
       console.log("I have claimed my planet")
     }
     // console.log(guess)
     if (wordArray.includes(guess)) {
+      remainingLetters = winWord.toUpperCase()
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
         let currentLetter = board[i].toUpperCase()
         let winWordUpper = winWord.toUpperCase()
 
         if (board[i] === winWord[i % 5]) {
           squareElements[i].classList.add("green")
+          remainingLetters = remainingLetters.replace(currentLetter, "")
+
           miniSquareElements.forEach((element) => {
             if (element.textContent.toUpperCase() === currentLetter) {
               element.classList.add("green")
             }
           })
-        } else if (winWordUpper.includes(currentLetter)) {
-          if (squareElements[i].classList.contains("green")) return
+          // } else if (winWordUpper.includes(currentLetter)) {
+          //   // if (squareElements[i].classList.contains("green"))
+          //   squareElements[i].classList.add("yellow")
+          //   miniSquareElements.forEach((element) => {
+          //     if (element.textContent.toUpperCase() === currentLetter) {
+          //       if (!element.classList.contains("green")) {
+          //         element.classList.add("yellow")
+          //       }
+          //     }
+          //   })
+          // } else if (!winWordUpper.includes(currentLetter)) {
+          //   squareElements[i].classList.add("gray")
+          //   miniSquareElements.forEach((element) => {
+          //     if (element.textContent.toUpperCase() === currentLetter) {
+          //       if (
+          //         !element.classList.contains("green") &&
+          //         !element.classList.contains("yellow")
+          //       ) {
+          //         element.classList.add("gray")
+          //       }
+          //     }
+          //   })
+          // }
+        }
+      }
+      for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
+        let currentLetter = board[i].toUpperCase()
+        let winWordUpper = winWord.toUpperCase()
+        // remainingLetters = remainingLetters.replace(currentLetter, "")
+        if (squareElements[i].classList.contains("green")) continue
+
+        if (remainingLetters.includes(currentLetter)) {
           squareElements[i].classList.add("yellow")
+          remainingLetters = remainingLetters.replace(currentLetter, "")
+
           miniSquareElements.forEach((element) => {
             if (element.textContent.toUpperCase() === currentLetter) {
               if (!element.classList.contains("green")) {
@@ -150,7 +191,7 @@ enter.addEventListener("click", () => {
               }
             }
           })
-        } else if (!winWordUpper.includes(currentLetter)) {
+        } else {
           squareElements[i].classList.add("gray")
           miniSquareElements.forEach((element) => {
             if (element.textContent.toUpperCase() === currentLetter) {
@@ -164,8 +205,11 @@ enter.addEventListener("click", () => {
           })
         }
       }
+      if (winner === true) {
+        return
+      }
+      currentRow++
     }
-    currentRow++
   }
 
   render()

@@ -2,7 +2,7 @@
 
 console.log("Lumiere")
 
-// declare variables for Wordle
+//////////////////// Declaring variables for Wordle///////////////////////
 
 let board
 let winner
@@ -82,6 +82,7 @@ const updateBoard = () => {
     element.textContent = board[index]
   })
 }
+// clicking the on screen keyboard
 function handleClick(event) {
   const sqrIndex = event.target.textContent
   if (sqrIndex.length === 1) {
@@ -92,7 +93,7 @@ function handleClick(event) {
     render()
   }
 }
-
+// adding letters to the board
 function insertLetter() {
   if (currentIndex < (currentRow + 1) * 5) {
     board[currentIndex] = letter
@@ -107,7 +108,7 @@ function insertLetter() {
 
 initialization()
 //////////////////////// Event Listeners //////////////////////////////////
-
+// event listener for on screen keyboard
 miniSquareElements.forEach((element) => {
   element.addEventListener("click", handleClick)
 })
@@ -130,12 +131,18 @@ enter.addEventListener("click", () => {
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
         let currentLetter = board[i].toUpperCase()
         let winWordUpper = winWord.toUpperCase()
-        if (!winWordUpper.includes(currentLetter)) {
+
+        if (board[i] === winWord[i % 5]) {
+          squareElements[i].classList.add("green")
+        } else if (!winWordUpper.includes(currentLetter)) {
           squareElements[i].classList.add("gray")
         }
         miniSquareElements.forEach((element) => {
           if (element.textContent.toUpperCase() === currentLetter) {
-            element.classList.add("gray")
+            element.classList.add("green")
+            if (element.classList !== "green") {
+              element.classList.add("gray")
+            }
           }
         })
       }

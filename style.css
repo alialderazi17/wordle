@@ -93,3 +93,7 @@ div {
   color: white;
   width: 65px;
 }
+
+.gray {
+  background-color: darkgray;
+}

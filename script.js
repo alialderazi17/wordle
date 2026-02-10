@@ -115,6 +115,7 @@ miniSquareElements.forEach((element) => {
 enter.addEventListener("click", () => {
   if (currentIndex === (currentRow + 1) * 5) {
     let guess = board.slice(currentRow * 5, (currentRow + 1) * 5).join("")
+
     if (guess === winWord) {
       console.log("SEPHIROTH WINS")
       winner = true
@@ -124,8 +125,20 @@ enter.addEventListener("click", () => {
     } else if (currentRow === 5 && winner === false && guess !== winWord) {
       console.log("I have claimed my planet")
     }
-    console.log(guess)
+    // console.log(guess)
     if (wordArray.includes(guess)) {
+      for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
+        let currentLetter = board[i].toUpperCase()
+        let winWordUpper = winWord.toUpperCase()
+        if (!winWordUpper.includes(currentLetter)) {
+          squareElements[i].classList.add("gray")
+        }
+        miniSquareElements.forEach((element) => {
+          if (element.textContent.toUpperCase() === currentLetter) {
+            element.classList.add("gray")
+          }
+        })
+      }
       currentRow++
     }
 
@@ -138,11 +151,11 @@ backspace.addEventListener("click", () => {
   if (currentIndex > currentRow * 5) {
     currentIndex--
     board[currentIndex] = ""
-    render()
   }
   if (winner === true) {
     return
   }
+  render()
 })
 
 document.addEventListener("keydown", (event) => {

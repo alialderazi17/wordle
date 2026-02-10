@@ -84,7 +84,7 @@ div {
 .rectangle {
   display: flex;
   flex-grow: 2;
-  height: auto;
+  height: 70px;
   border: 2px solid black;
   background-color: gray;
   box-sizing: border-box;

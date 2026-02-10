@@ -11,14 +11,17 @@ let currentIndex
 let currentRow
 
 const aL = "qwertyuiopasdfghjklzxcvbnm"
-const split = aL.split("")
+const splitAL = aL.split("")
 
-wordArray = ["GRUMP", "VERSO", "PAINT", "GRIEF", "PARRY", "GLASS"]
+let wordArray = ["GRUMP", "VERSO", "PAINT", "GRIEF", "PARRY", "GLASS", "SWORD"]
 
 const squareElements = document.querySelectorAll(".square")
 const miniSquareElements = document.querySelectorAll(".mini-square")
 const enter = document.querySelector("#enter")
 const backspace = document.querySelector("#backspace")
+
+const winWord = wordArray[Math.floor(Math.random() * wordArray.length)]
+console.log(winWord)
 // const keyboard = document.querySelector(".keyboard")
 // console.log(keyboard)
 // console.log(miniSquareElement)
@@ -97,7 +100,7 @@ function insertLetter() {
       return console.log(letter)
     } else {
       currentIndex++
-      console.log(board)
+      // console.log(board)
     }
   }
 }
@@ -112,11 +115,20 @@ miniSquareElements.forEach((element) => {
 enter.addEventListener("click", () => {
   if (currentIndex === (currentRow + 1) * 5) {
     let guess = board.slice(currentRow * 5, (currentRow + 1) * 5).join("")
-
+    if (guess === winWord) {
+      console.log("SEPHIROTH WINS")
+      winner = true
+    }
+    if (winner === true) {
+      return
+    } else if (currentRow === 5 && winner === false && guess !== winWord) {
+      console.log("I have claimed my planet")
+    }
     console.log(guess)
     if (wordArray.includes(guess)) {
       currentRow++
     }
+
     render()
   }
 })
@@ -128,20 +140,24 @@ backspace.addEventListener("click", () => {
     board[currentIndex] = ""
     render()
   }
+  if (winner === true) {
+    return
+  }
 })
 
 document.addEventListener("keydown", (event) => {
   // console.log("Sephiroth")
-  event.preventDefault()
   if (event.key === "Enter") {
+    event.preventDefault()
     enter.click()
   }
   if (event.key === "Backspace") {
+    event.preventDefault()
     backspace.click()
   }
   if (event.key.length === 1) {
     let pressedKey = event.key.toLowerCase()
-    if (split.includes(pressedKey) !== true) {
+    if (splitAL.includes(pressedKey) !== true) {
       return false
     } else {
       letter = event.key.toUpperCase()

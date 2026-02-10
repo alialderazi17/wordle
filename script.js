@@ -206,7 +206,8 @@ enter.addEventListener("click", () => {
         }
       }
       if (winner === true) {
-        return
+        alert("CONGRATULATIONS YOU SAVED THE PLANET FROM ETERNAL RUIN")
+        window.location.href = "./win.html"
       }
       currentRow++
     }

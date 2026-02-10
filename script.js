@@ -20,7 +20,8 @@ const miniSquareElements = document.querySelectorAll(".mini-square")
 const enter = document.querySelector("#enter")
 const backspace = document.querySelector("#backspace")
 
-const winWord = wordArray[Math.floor(Math.random() * wordArray.length)]
+// const winWord = wordArray[Math.floor(Math.random() * wordArray.length)]
+const winWord = wordArray[1]
 console.log(winWord)
 // const keyboard = document.querySelector(".keyboard")
 // console.log(keyboard)
@@ -134,23 +135,40 @@ enter.addEventListener("click", () => {
 
         if (board[i] === winWord[i % 5]) {
           squareElements[i].classList.add("green")
+          miniSquareElements.forEach((element) => {
+            if (element.textContent.toUpperCase() === currentLetter) {
+              element.classList.add("green")
+            }
+          })
+        } else if (winWordUpper.includes(currentLetter)) {
+          if (squareElements[i].classList.contains("green")) return
+          squareElements[i].classList.add("yellow")
+          miniSquareElements.forEach((element) => {
+            if (element.textContent.toUpperCase() === currentLetter) {
+              if (!element.classList.contains("green")) {
+                element.classList.add("yellow")
+              }
+            }
+          })
         } else if (!winWordUpper.includes(currentLetter)) {
           squareElements[i].classList.add("gray")
-        }
-        miniSquareElements.forEach((element) => {
-          if (element.textContent.toUpperCase() === currentLetter) {
-            element.classList.add("green")
-            if (element.classList !== "green") {
-              element.classList.add("gray")
+          miniSquareElements.forEach((element) => {
+            if (element.textContent.toUpperCase() === currentLetter) {
+              if (
+                !element.classList.contains("green") &&
+                !element.classList.contains("yellow")
+              ) {
+                element.classList.add("gray")
+              }
             }
-          }
-        })
+          })
+        }
       }
-      currentRow++
     }
-
-    render()
+    currentRow++
   }
+
+  render()
 })
 
 backspace.addEventListener("click", () => {

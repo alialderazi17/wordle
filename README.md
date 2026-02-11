@@ -19,7 +19,7 @@
 ### **Getting Started**
 
 #### You are greeted instantly with the board and you start guessing by inputting a word. Each letter will have one of three states, Gray for non existing ones, Yellow for existing but not in the right position, and Green for an exact match.
-#### The project is deployed and can be viewed [here]()
+#### The project is deployed and can be viewed [here](aa-wordleclone.surge.sh)
 
 ***
 

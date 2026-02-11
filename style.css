@@ -19,6 +19,10 @@ div {
 audio {
   display: none;
 }
+body {
+  animation: fadeIn;
+  animation-duration: 2s;
+}
 
 .board {
   display: flex;
@@ -28,6 +32,8 @@ audio {
   width: 350px;
   justify-content: center;
   gap: 5px 5px;
+  /* animation: pulse; */
+  /* animation-duration: 3s; */
 }
 .square {
   display: flex;
@@ -35,10 +41,14 @@ audio {
   aspect-ratio: 1/1;
   border: 2px solid white;
   box-sizing: border-box;
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   justify-content: space-evenly;
   color: white;
+  font-family: "Playwrite NZ Basic", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 .keyboard {
   display: flex;
@@ -50,7 +60,7 @@ audio {
   display: flex;
   flex-flow: nowrap row;
   aspect-ratio: 1/1;
-  border: 2px solid black;
+  border: 2px solid white;
   background-color: gray;
   box-sizing: border-box;
   font-size: 32px;
@@ -58,6 +68,10 @@ audio {
   justify-content: space-evenly;
   width: 8%;
   color: white;
+  font-family: "Playwrite NZ Basic", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 .top-row {
   display: flex;
@@ -90,48 +104,132 @@ audio {
   display: flex;
   flex-grow: 2;
   height: 70px;
-  border: 2px solid black;
+  border: 2px solid white;
   background-color: gray;
   box-sizing: border-box;
   font-size: 30px;
   text-align: center;
   color: white;
   width: 65px;
+  font-family: "Playwrite NZ Basic", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .gray {
   background-color: darkgray;
+  animation: flipInX;
+  animation-duration: 3s;
+  /* transition: fadeIn;
+  transition-duration: 2s; */
 }
 
 .green {
-  background-color: darkgreen;
+  background-color: green;
+  animation: flipInX;
+  animation-duration: 3s;
+  /* transition: fadeIn;
+  transition-duration: 2s; */
 }
 .yellow {
-  background-color: darkgoldenrod;
+  background-color: rgb(255, 197, 52);
+  animation: flipInX;
+  animation-duration: 3s;
+  /* transition: fadeIn;
+  transition-duration: 2s; */
 }
 
 #win {
   /* background-color: red; */
-  background-image: url(https://i.imgur.com/LP1NCaP.jpeg);
+  background-image: url(/images/ffviir-zoom-midgar-city.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #index {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: darkgray;
-  background-image: url(https://img.freepik.com/free-photo/black-rustic-blank-chalkboard-background_53876-104628.jpg?semt=ais_wordcount_boost&w=740&q=80);
+  background-image: url(./images/istockphoto-183766162-612x612.jpg);
   background-size: cover;
 }
 #lose {
   background-color: black;
 }
 #try-again {
-  text-align: center;
-  justify-content: center;
-  margin-left: 600px;
+  background-color: #2e2e2e;
+  border: 1px solid #555;
+  padding: 10px 20px;
+  cursor: pointer;
 
+  font-family: "Georgia", serif;
+  color: #c0c0c0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
   height: 55px;
   width: 200px;
+  margin-left: 45%;
+}
+#try-again:hover {
+  background-color: #444;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+#try-again:active {
+  background-color: #1a1a1a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transform: translateY(1px);
+}
+#play-again {
+  margin-left: 50%;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #04009d 0%, #06004d 100%);
+  border: solid 1px #424542;
+  box-shadow:
+    1px 1px #e7dfe7,
+    -1px -1px #e7dfe7,
+    1px -1px #e7dfe7,
+    -1px 1px #e7dfe7,
+    0 -2px #9c9a9c,
+    -2px 0 #7b757b,
+    0 2px #424542;
+  color: #fff;
+  padding: 10px 20px;
+  font-family: monospace;
+  font-size: 16px;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #000;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+#play-again:hover {
+  background: linear-gradient(to bottom, #06004d 0%, #04009d 100%);
+}
+#play-again:active {
+  transform: translateY(2px);
+  box-shadow:
+    1px 1px #e7dfe7,
+    -1px -1px #e7dfe7,
+    1px -1px #e7dfe7,
+    -1px 1px #e7dfe7,
+    0 -1px #9c9a9c,
+    -1px 0 #7b757b,
+    0 1px #424542;
 }
 #you-died {
   font-family: "IM Fell Double Pica", serif;
@@ -140,4 +238,14 @@ audio {
   font-size: 100px;
   font-style: normal;
   color: maroon;
+  animation: fadeIn;
+  animation-duration: 2s;
+  margin-right: 30%;
+  margin-left: 30%;
+}
+#cloud {
+  display: flex;
+  margin: auto;
+  animation: rotateInUpLeft;
+  animation-duration: 2s;
 }

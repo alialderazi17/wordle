@@ -341,7 +341,7 @@ enter.addEventListener("click", () => {
         }
       }
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
-        // originally was included in the upper loop but it caused unintended behavior with the colors i.e coloring a wrong letter yellow, shout out https://stackoverflow.com/questions/71324956/wordle-implementation-dealing-with-duplicate-letters-edge-case Neeraj Athalye
+        // originally was included in the upper loop but it caused unintended behavior with the colors i.e double letters yellow, shout out https://stackoverflow.com/questions/71324956/wordle-implementation-dealing-with-duplicate-letters-edge-case Neeraj Athalye
         let currentLetter = board[i].toUpperCase()
         // let winWordUpper = winWord.toUpperCase()
         // remainingLetters = remainingLetters.replace(currentLetter, "")
@@ -373,11 +373,13 @@ enter.addEventListener("click", () => {
         }
       }
       if (winner === true) {
-        alert("CONGRATULATIONS YOU SAVED THE PLANET FROM ETERNAL RUIN")
-        window.location.href = "./win.html"
+        // alert("CONGRATULATIONS YOU SAVED THE PLANET FROM ETERNAL RUIN")
+        setTimeout(() => {
+          window.location.href = "./win.html"
+        }, 3500)
       } else if (currentRow === 5 && winner === false && guess !== winWord) {
         console.log("I have claimed my planet")
-        alert("THE PROMISED LAND IS MINE")
+        // alert("THE PROMISED LAND IS MINE")
         window.location.href = "./lose.html"
       }
       currentRow++

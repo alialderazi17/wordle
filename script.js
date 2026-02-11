@@ -13,15 +13,159 @@ let currentRow
 const aL = "qwertyuiopasdfghjklzxcvbnm"
 const splitAL = aL.split("")
 
+// let wordArray = [
+//   "GRUMP",
+//   "VERSO",
+//   "PAINT",
+//   "GRIEF",
+//   "PARRY",
+//   "GLASS",
+//   "SWORD",
+//   "VERSE",
+//   "LUMEN",
+//   "WITCH",
+//   "MUSIC",
+//   "BLACK",
+//   "ARRAY",
+//   "BREAD",
+//   "STACK",
+//   "WHACK",
+//   "SOULS",
+//   "PLAIN",
+//   "VEGAN",
+//   "WINGS",
+//   "FINAL",
+//   "WORDS",
+//   "BREAK",
+//   "POWER",
+//   "PIZZA",
+//   "POINT",
+//   "AUDIO",
+//   "CRATE",
+//   "CHEST",
+//   "STICK",
+//   "IDEAL",
+//   "IDIOM",
+//   "GRAND",
+//   "HOPES",
+//   "STONE",
+//   "CLEAR",
+//   "APPLE",
+//   "THERE",
+//   "PRICE",
+//   "RECTO",
+// ]
+
 let wordArray = [
-  "GRUMP",
-  "VERSO",
-  "PAINT",
-  "GRIEF",
-  "PARRY",
+  "APPLE",
+  "ARRAY",
+  "AUDIO",
+  "ALERT",
+  "BLACK",
+  "BREAD",
+  "BREAK",
+  "BOOTH",
+  "CHEST",
+  "CLEAR",
+  "CRATE",
+  "CORNY",
+  "DRAIN",
+  "DROWN",
+  "DRINK",
+  "DINES",
+  "DIMES",
+  "EMBED",
+  "EARTH",
+  "EQUIP",
+  "EXILE",
+  "FINAL",
+  "FLANK",
+  "FANCY",
+  "FIGHT",
   "GLASS",
+  "GRAND",
+  "GRIEF",
+  "GRUMP",
+  "HOPES",
+  "HIGHS",
+  "HALLS",
+  "HUNCH",
+  "IDEAL",
+  "IDIOM",
+  "IDOLS",
+  "IRONS",
+  "JAILS",
+  "JOKER",
+  "JUDGE",
+  "JUICE",
+  "KNACK",
+  "KNOTS",
+  "KNIFE",
+  "KARMA",
+  "LUMEN",
+  "LICKS",
+  "LOWER",
+  "MUSIC",
+  "MEALS",
+  "MAJOR",
+  "MANOR",
+  "NORTH",
+  "NEATS",
+  "NIGHT",
+  "NODES",
+  "OCEAN",
+  "OFFER",
+  "OLIVE",
+  "ORDER",
+  "PAINT",
+  "PARRY",
+  "PIZZA",
+  "PLAIN",
+  "POINT",
+  "POWER",
+  "PRICE",
+  "QUACK",
+  "QUAKE",
+  "QUEEN",
+  "QUIET",
+  "REAPS",
+  "ROUND",
+  "RECTO",
+  "ROCKS",
+  "SOULS",
+  "STACK",
+  "STICK",
+  "STONE",
   "SWORD",
+  "THERE",
+  "THINE",
+  "TOUGH",
+  "TRACK",
+  "URBAN",
+  "ULCER",
+  "UNCLE",
+  "UPPER",
+  "VEGAN",
   "VERSE",
+  "VERSO",
+  "VEINS",
+  "WHACK",
+  "WINGS",
+  "WITCH",
+  "WORDS",
+  "WRACK",
+  "XENIC",
+  "XENON",
+  "XYLEM",
+  "XERIC",
+  "YIELD",
+  "YACHT",
+  "YOUTH",
+  "YOUNG",
+  "ZEBRA",
+  "ZONES",
+  "ZOOMS",
+  "ZEALS",
 ]
 
 const squareElements = document.querySelectorAll(".square")
@@ -29,8 +173,8 @@ const miniSquareElements = document.querySelectorAll(".mini-square")
 const enter = document.querySelector("#enter")
 const backspace = document.querySelector("#backspace")
 
-// const winWord = wordArray[Math.floor(Math.random() * wordArray.length)]
-const winWord = wordArray[1]
+const winWord = wordArray[Math.floor(Math.random() * wordArray.length)]
+// const winWord = wordArray[1]
 console.log(winWord)
 // const keyboard = document.querySelector(".keyboard")
 // console.log(keyboard)
@@ -158,6 +302,7 @@ enter.addEventListener("click", () => {
     if (wordArray.includes(guess)) {
       remainingLetters = winWord.toUpperCase()
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
+        // loop for green letters
         let currentLetter = board[i].toUpperCase()
         // let winWordUpper = winWord.toUpperCase()
 
@@ -196,6 +341,7 @@ enter.addEventListener("click", () => {
         }
       }
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
+        // originally was included in the upper loop but it caused unintended behavior with the colors i.e coloring a wrong letter yellow, shout out https://stackoverflow.com/questions/71324956/wordle-implementation-dealing-with-duplicate-letters-edge-case Neeraj Athalye
         let currentLetter = board[i].toUpperCase()
         // let winWordUpper = winWord.toUpperCase()
         // remainingLetters = remainingLetters.replace(currentLetter, "")

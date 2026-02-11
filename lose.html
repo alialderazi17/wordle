@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YOU LOST</title>
     <link rel="stylesheet" href="./style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IM+Fell+Double+Pica:ital@0;1&family=Londrina+Shadow&family=Zen+Old+Mincho&display=swap" rel="stylesheet">
     <script defer src="./script.js"></script>
   </head>
   <body id="lose">
-    <button><a href="./index.html" style="text-decoration: none;">Try Again!</button></a>
+    <audio controls autoplay>
+      <source src="audio-file/dark-souls-you-died-sound-effect_hm5sYFG.mp3" >
+    </audio>
+    <div class="lost">
+      <h1 id="you-died">YOU DIED</h1>
+    <button id="try-again"><a href="./index.html" style="text-decoration: none;">Try Again!</button></a>
+  </div>
   </body>
 </html>

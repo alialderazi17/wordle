@@ -1,7 +1,3 @@
-// inspiration from tic tac toe homework
-
-console.log("Lumiere")
-
 //////////////////// Declaring variables for Wordle///////////////////////
 
 let board
@@ -12,50 +8,7 @@ let currentRow
 
 const aL = "qwertyuiopasdfghjklzxcvbnm"
 const splitAL = aL.split("")
-
-// let wordArray = [
-//   "GRUMP",
-//   "VERSO",
-//   "PAINT",
-//   "GRIEF",
-//   "PARRY",
-//   "GLASS",
-//   "SWORD",
-//   "VERSE",
-//   "LUMEN",
-//   "WITCH",
-//   "MUSIC",
-//   "BLACK",
-//   "ARRAY",
-//   "BREAD",
-//   "STACK",
-//   "WHACK",
-//   "SOULS",
-//   "PLAIN",
-//   "VEGAN",
-//   "WINGS",
-//   "FINAL",
-//   "WORDS",
-//   "BREAK",
-//   "POWER",
-//   "PIZZA",
-//   "POINT",
-//   "AUDIO",
-//   "CRATE",
-//   "CHEST",
-//   "STICK",
-//   "IDEAL",
-//   "IDIOM",
-//   "GRAND",
-//   "HOPES",
-//   "STONE",
-//   "CLEAR",
-//   "APPLE",
-//   "THERE",
-//   "PRICE",
-//   "RECTO",
-// ]
-
+// <= 4 words for each letter
 let wordArray = [
   "APPLE",
   "ARRAY",
@@ -174,11 +127,7 @@ const enter = document.querySelector("#enter")
 const backspace = document.querySelector("#backspace")
 
 const winWord = wordArray[Math.floor(Math.random() * wordArray.length)]
-// const winWord = wordArray[1]
-console.log(winWord)
-// const keyboard = document.querySelector(".keyboard")
-// console.log(keyboard)
-// console.log(miniSquareElement)
+console.log(winWord) // we're leaving this since only specific words are accepted, not a dictionary so sometimes it becomes impossible to guess.
 
 /////////////////// Functions for the logic
 const initialization = () => {
@@ -221,19 +170,9 @@ const initialization = () => {
   render()
 }
 
-// function render() {
-//   updateBoard()
-// }
-
 const render = () => {
   updateBoard()
 }
-
-// function updateBoard() {
-//   for (let i = 0; i < squareElement.length; i++) {
-//     squareElement[i].textContent = board[i]
-//   }
-// }
 
 const updateBoard = () => {
   squareElements.forEach((element, index) => {
@@ -241,16 +180,6 @@ const updateBoard = () => {
   })
 }
 // clicking the on screen keyboard
-// function handleClick(event) {
-//   const sqrIndex = event.target.textContent
-//   if (sqrIndex.length === 1) {
-//     letter = sqrIndex
-//     // console.log(event.target.id)
-//     insertLetter()
-//     // console.log(sqrIndex)
-//     render()
-//   }
-// }
 
 const handleClick = (event) => {
   const sqrIndex = event.target.textContent
@@ -261,17 +190,7 @@ const handleClick = (event) => {
   }
 }
 // adding letters to the board
-// function insertLetter() {
-//   if (currentIndex < (currentRow + 1) * 5) {
-//     board[currentIndex] = letter
-//     if ((currentRow + 1) * 5 === 35) {
-//       return console.log(letter)
-//     } else {
-//       currentIndex++
-//       // console.log(board)
-//     }
-//   }
-// }
+
 const insertLetter = () => {
   if (currentIndex < (currentRow + 1) * 5) {
     board[currentIndex] = letter
@@ -289,22 +208,18 @@ initialization()
 miniSquareElements.forEach((element) => {
   element.addEventListener("click", handleClick)
 })
-
+// the function for the tile colors and enter button
 enter.addEventListener("click", () => {
   if (currentIndex === (currentRow + 1) * 5) {
     let guess = board.slice(currentRow * 5, (currentRow + 1) * 5).join("")
 
     if (guess === winWord) {
-      console.log("SEPHIROTH WINS")
       winner = true
     }
-    // console.log(guess)
     if (wordArray.includes(guess)) {
       remainingLetters = winWord.toUpperCase()
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
-        // loop for green letters
         let currentLetter = board[i].toUpperCase()
-        // let winWordUpper = winWord.toUpperCase()
 
         if (board[i] === winWord[i % 5]) {
           squareElements[i].classList.add("green")
@@ -315,36 +230,12 @@ enter.addEventListener("click", () => {
               element.classList.add("green")
             }
           })
-          // } else if (winWordUpper.includes(currentLetter)) {
-          //   // if (squareElements[i].classList.contains("green"))
-          //   squareElements[i].classList.add("yellow")
-          //   miniSquareElements.forEach((element) => {
-          //     if (element.textContent.toUpperCase() === currentLetter) {
-          //       if (!element.classList.contains("green")) {
-          //         element.classList.add("yellow")
-          //       }
-          //     }
-          //   })
-          // } else if (!winWordUpper.includes(currentLetter)) {
-          //   squareElements[i].classList.add("gray")
-          //   miniSquareElements.forEach((element) => {
-          //     if (element.textContent.toUpperCase() === currentLetter) {
-          //       if (
-          //         !element.classList.contains("green") &&
-          //         !element.classList.contains("yellow")
-          //       ) {
-          //         element.classList.add("gray")
-          //       }
-          //     }
-          //   })
-          // }
         }
       }
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
         // originally was included in the upper loop but it caused unintended behavior with the colors i.e double letters yellow, shout out https://stackoverflow.com/questions/71324956/wordle-implementation-dealing-with-duplicate-letters-edge-case Neeraj Athalye
         let currentLetter = board[i].toUpperCase()
-        // let winWordUpper = winWord.toUpperCase()
-        // remainingLetters = remainingLetters.replace(currentLetter, "")
+
         if (squareElements[i].classList.contains("green")) continue
 
         if (remainingLetters.includes(currentLetter)) {
@@ -373,14 +264,14 @@ enter.addEventListener("click", () => {
         }
       }
       if (winner === true) {
-        // alert("CONGRATULATIONS YOU SAVED THE PLANET FROM ETERNAL RUIN")
         setTimeout(() => {
           window.location.href = "./win.html"
         }, 3500)
       } else if (currentRow === 5 && winner === false && guess !== winWord) {
         console.log("I have claimed my planet")
-        // alert("THE PROMISED LAND IS MINE")
-        window.location.href = "./lose.html"
+        setTimeout(() => {
+          window.location.href = "./lose.html"
+        }, 3500)
       }
       currentRow++
     }
@@ -388,9 +279,8 @@ enter.addEventListener("click", () => {
 
   render()
 })
-
+// backspace button
 backspace.addEventListener("click", () => {
-  console.log("Sephiroth")
   if (currentIndex > currentRow * 5) {
     currentIndex--
     board[currentIndex] = ""
@@ -400,9 +290,8 @@ backspace.addEventListener("click", () => {
   }
   render()
 })
-
+// keyboard functionality
 document.addEventListener("keydown", (event) => {
-  // console.log("Sephiroth")
   if (event.key === "Enter") {
     event.preventDefault()
     enter.click()

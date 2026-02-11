@@ -32,8 +32,6 @@ body {
   width: 350px;
   justify-content: center;
   gap: 5px 5px;
-  /* animation: pulse; */
-  /* animation-duration: 3s; */
 }
 .square {
   display: flex;
@@ -121,28 +119,21 @@ body {
   background-color: darkgray;
   animation: flipInX;
   animation-duration: 3s;
-  /* transition: fadeIn;
-  transition-duration: 2s; */
 }
 
 .green {
   background-color: green;
   animation: flipInX;
   animation-duration: 3s;
-  /* transition: fadeIn;
-  transition-duration: 2s; */
 }
 .yellow {
   background-color: rgb(255, 197, 52);
   animation: flipInX;
   animation-duration: 3s;
-  /* transition: fadeIn;
-  transition-duration: 2s; */
 }
 
 #win {
-  /* background-color: red; */
-  background-image: url(/images/ffviir-zoom-midgar-city.jpg);
+  background-image: url(./images/ffviir-zoom-midgar-city.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -195,6 +186,7 @@ body {
 }
 #play-again {
   margin-left: 50%;
+  margin-right: 20%;
   justify-content: center;
   text-align: center;
   background: linear-gradient(to bottom, #04009d 0%, #06004d 100%);
@@ -212,6 +204,7 @@ body {
   font-family: monospace;
   font-size: 16px;
   cursor: pointer;
+
   text-shadow: 1px 1px 0 #000;
   transition:
     transform 0.1s ease,
@@ -239,9 +232,18 @@ body {
   font-style: normal;
   color: maroon;
   animation: fadeIn;
-  animation-duration: 2s;
+  animation-duration: 5s;
   margin-right: 30%;
   margin-left: 30%;
+}
+#you-won {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  animation: fadeIn;
+  animation-duration: 7s;
+  color: #4e818e;
 }
 #cloud {
   display: flex;

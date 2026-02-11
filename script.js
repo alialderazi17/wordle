@@ -77,7 +77,11 @@ const initialization = () => {
   render()
 }
 
-function render() {
+// function render() {
+//   updateBoard()
+// }
+
+const render = () => {
   updateBoard()
 }
 
@@ -93,25 +97,44 @@ const updateBoard = () => {
   })
 }
 // clicking the on screen keyboard
-function handleClick(event) {
+// function handleClick(event) {
+//   const sqrIndex = event.target.textContent
+//   if (sqrIndex.length === 1) {
+//     letter = sqrIndex
+//     // console.log(event.target.id)
+//     insertLetter()
+//     // console.log(sqrIndex)
+//     render()
+//   }
+// }
+
+const handleClick = (event) => {
   const sqrIndex = event.target.textContent
   if (sqrIndex.length === 1) {
     letter = sqrIndex
-    console.log(event.target.id)
     insertLetter()
-    // console.log(sqrIndex)
     render()
   }
 }
 // adding letters to the board
-function insertLetter() {
+// function insertLetter() {
+//   if (currentIndex < (currentRow + 1) * 5) {
+//     board[currentIndex] = letter
+//     if ((currentRow + 1) * 5 === 35) {
+//       return console.log(letter)
+//     } else {
+//       currentIndex++
+//       // console.log(board)
+//     }
+//   }
+// }
+const insertLetter = () => {
   if (currentIndex < (currentRow + 1) * 5) {
     board[currentIndex] = letter
     if ((currentRow + 1) * 5 === 35) {
       return console.log(letter)
     } else {
       currentIndex++
-      // console.log(board)
     }
   }
 }
@@ -130,15 +153,13 @@ enter.addEventListener("click", () => {
     if (guess === winWord) {
       console.log("SEPHIROTH WINS")
       winner = true
-    } else if (currentRow === 5 && winner === false && guess !== winWord) {
-      console.log("I have claimed my planet")
     }
     // console.log(guess)
     if (wordArray.includes(guess)) {
       remainingLetters = winWord.toUpperCase()
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
         let currentLetter = board[i].toUpperCase()
-        let winWordUpper = winWord.toUpperCase()
+        // let winWordUpper = winWord.toUpperCase()
 
         if (board[i] === winWord[i % 5]) {
           squareElements[i].classList.add("green")
@@ -176,7 +197,7 @@ enter.addEventListener("click", () => {
       }
       for (let i = currentRow * 5; i < (currentRow + 1) * 5; i++) {
         let currentLetter = board[i].toUpperCase()
-        let winWordUpper = winWord.toUpperCase()
+        // let winWordUpper = winWord.toUpperCase()
         // remainingLetters = remainingLetters.replace(currentLetter, "")
         if (squareElements[i].classList.contains("green")) continue
 
@@ -208,6 +229,10 @@ enter.addEventListener("click", () => {
       if (winner === true) {
         alert("CONGRATULATIONS YOU SAVED THE PLANET FROM ETERNAL RUIN")
         window.location.href = "./win.html"
+      } else if (currentRow === 5 && winner === false && guess !== winWord) {
+        console.log("I have claimed my planet")
+        alert("THE PROMISED LAND IS MINE")
+        window.location.href = "./lose.html"
       }
       currentRow++
     }
